@@ -62,13 +62,13 @@ export class MicropubClient {
     if (typeof visibility === 'undefined') {
       visibility = 'private'
     }
+    payload.visibility = visibility
     return fetch(this.endpoint, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
         type: [`h-${type}`],
-        properties: payload,
-        visibility: visibility
+        properties: payload
       })
     }).then(response => {
       if (response.status === 200 || response.status === 201) {
